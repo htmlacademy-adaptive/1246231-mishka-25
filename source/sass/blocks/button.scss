@@ -1,0 +1,29 @@
+.button {
+  display: inline-block;
+  padding: 16px;
+
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 16px;
+  font-family: "Open Sans", "Arial", sans-serif;
+  text-align: center;
+  color: var(--grey);
+  text-transform: uppercase;
+  text-decoration: none;
+
+  background-color: transparent;
+  border: 2px solid var(--grey);
+  cursor: pointer;
+
+  transition: all 0.8s ease;
+
+  &:hover {
+    color: var(--white);
+
+    background-color: var(--grey);
+  }
+
+  &:active {
+    color: var(--white-alpha-3);
+  }
+}

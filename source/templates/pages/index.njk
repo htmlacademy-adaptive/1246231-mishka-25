@@ -1,0 +1,203 @@
+{% extends 'base.njk' %}
+{% set title = 'Мишка' %}
+
+{% block name %}
+<section class="hero">
+  <div class="container">
+    <div class="hero__inner">
+      <h1 class="hero__title">Милые штуки ручной работы&nbsp;для&nbsp;дома</h1>
+
+      <div class="catagories">
+        <article class="categories__item categories__item--one">
+          <a class="categories__link" href="catalog.html">
+            <h2 class="categories__name">Предметы интерьера</h2>
+          </a>
+        </article>
+        <article class="categories__item categories__item--two">
+          <a class="categories__link" href="catalog.html">
+            <h2 class="categories__name">Детские игрушки</h2>
+          </a>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <section class="product-weekly">
+    <div class="product-weekly__title-row">
+      <h2 class="product-weekly__title">Вязаные корзинки</h2>
+      <span class="product-weekly__attention">Товар недели</span>
+    </div>
+
+    <div class="product-weekly__description">
+      <p class="product-weekly__text">Экологически чистая пряжа, ручная работа. Доступны в шести расцветках и трёх размерах.</p>
+
+      <dl class="product-weekly__description-list">
+        <div class="product-weekly__description-row">
+          <dt class="product-weekly__definition">Цвет:</dt>
+          <dd class="product-weekly__value">тиффани/серый</dd>
+        </div>
+        <div class="product-weekly__description-row">
+          <dt class="product-weekly__definition">Диаметр:</dt>
+          <dd class="product-weekly__value">25 см</dd>
+        </div>
+        <div class="product-weekly__description-row">
+          <dt class="product-weekly__definition">Высота:</dt>
+          <dd class="product-weekly__value">15 см</dd>
+        </div>
+      </dl>
+    </div>
+
+    <div class="product-weekly__image-wrapper">
+      {{ picture(
+        path_file='img/content/catalog/',
+        class_name='product-weekly__image',
+        mobile_image='triple-set-mobile@1x',
+        mobile_image2x='triple-set-mobile@2x',
+        tablet_image='triple-set-tablet@1x',
+        tablet_image2x='triple-set-tablet@2x',
+        desktop_image='triple-set-desktop@1x',
+        desktop_image2x='triple-set-desktop@2x',
+        width=260,
+        height=315,
+        bp_tablet=bp_tablet,
+        bp_desktop=bp_desktop,
+        type='jpg',
+        webp=true
+      ) }}
+    </div>
+
+    <div class="product-weekly__order">
+      <span class="product-weekly__price">Цена: 990 руб.</span>
+      <a class="product-weekly__button button-order button" href="catalog.html">Заказать</a>
+    </div>
+  </section>
+
+  <section class="about">
+    <h2 class="about__title">Коротко о нас:</h2>
+
+    <ul class="about__features">
+      {% set features = [{
+        'text': 'Экологически чистые&nbsp;материалы',
+        'modifier': 'eco'
+      }, {
+        'text': 'Связано вручную с&nbsp;любовью&nbsp;и&nbsp;умилением',
+        'modifier': 'hand'
+      }, {
+        'text': 'Скандинавский стиль по&nbsp;российской&nbsp;цене',
+        'modifier': 'style'
+      }, {
+        'text': 'Поддержка отечественного производителя',
+        'modifier': 'homeland'
+      }, {
+        'text': 'Увеличивает лайки на&nbsp;фотографиях',
+        'modifier': 'likes'
+      }, {
+        'text': 'Поставляется в&nbsp;подарочной&nbsp;упаковке',
+        'modifier': 'gift'
+      }] %}
+
+      {% for feature in features %}
+        <li class="about__features-item about__features-item--{{ feature.modifier }}">
+          <p class="about__text">{{ feature.text | safe }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="slider">
+    {% set slides = [{
+      'review': 'Я молодая мама, но всё равно фотографии не набирали и близко такого количества лайков, как
+                 у&nbsp;популярных инстамамочек. В&nbsp;отчаянии, я накупила аксессуаров и игрушек в Мишке, и&nbsp;мои
+                 фотографии сразу стали более стильными, а также набирают больше лайков!',
+      'author': 'Анастасия Красильникова',
+      'tag': '@misssssiskras',
+      'active': true
+    }, {
+      'review': 'Я сестра молодой мамы, но всё равно фотографии не набирали и близко такого количества лайков, как
+                 у популярных инстамамочек. В отчаянии, я накупила аксессуаров и игрушек в Мишке, и мои
+                 фотографии сразу стали более стильными, а также набирают больше лайков!',
+      'author': 'Екатерина Красильникова',
+      'tag': '@misssssiskras2'
+    }, {
+      'review': 'Я двоюродная сестра молодой мамы, но всё равно фотографии не набирали и близко такого
+                количества лайков, как у популярных инстамамочек. В отчаянии, я накупила аксессуаров и игрушек в
+                Мишке, и мои фотографии сразу стали более стильными, а также набирают больше лайков!',
+      'author': 'Елена Красильникова',
+      'tag': '@misssssiskras3'
+    }] %}
+
+    <div class="slider__wrapper">
+      <h2 class="slider__title">Отзывы</h2>
+      <div class="slider__slides">
+        {% for slide in slides %}
+          <div class="slider__slide {% if slide.active %}slider__slide--active{% endif %}">
+            <p class="slider__text">{{ slide.review | safe }}</p>
+            <p class="slider__author">
+              <span class="slider__author-name">{{ slide.author }}</span>
+              <span class="slider__author-tag">{{ slide.tag }}</span>
+            </p>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="slider__controls">
+        <button class="slider__control slider__control--previous" type="button" aria-label="Предыдущий слайд."></button>
+        <button class="slider__control slider__control--next" type="button" aria-label="Следующий слайд."></button>
+      </div>
+      <a class="slider__button button" href="#" aria-label="Написать отзыв.">Написать</a>
+    </div>
+  </section>
+
+  <section class="contacts">
+    <h2 class="contacts__title">Контакты</h2>
+
+    <dl class="contacts__list">
+      <div class="contacts__row">
+        <dt class="contacts__row-definition">e-mail:</dt>
+        <dd class="contacts__row-value">
+          <a class="contacts__link" href="mailto:info@mimimishkashop.ru">info@mimimishkashop.ru</a>
+        </dd>
+      </div>
+      <div class="contacts__row">
+        <dt class="contacts__row-definition">адрес:</dt>
+        <dd class="contacts__row-value">г. Санкт-Петербург ул.&nbsp;Большая&nbsp;Конюшенная д.&nbsp;19/8,&nbsp;офис&nbsp;101</dd>
+      </div>
+    </dl>
+
+    <div class="contacts__map-wrapper">
+      <a class="contacts__map-link" href="https://yandex.ru/maps/2/saint-petersburg/?ll=30.326522%2C59.935811&mode=routes&rtext=59.935569%2C30.326942~59.938635%2C30.323118&rtt=pd&ruri=~ymapsbm1%3A%2F%2Fgeo%3Fll%3D30.323%252C59.939%26spn%3D0.001%252C0.001%26text%3D%25D0%25A0%25D0%25BE%25D1%2581%25D1%2581%25D0%25B8%25D1%258F%252C%2520%25D0%25A1%25D0%25B0%25D0%25BD%25D0%25BA%25D1%2582-%25D0%259F%25D0%25B5%25D1%2582%25D0%25B5%25D1%2580%25D0%25B1%25D1%2583%25D1%2580%25D0%25B3%252C%2520%25D0%2591%25D0%25BE%25D0%25BB%25D1%258C%25D1%2588%25D0%25B0%25D1%258F%2520%25D0%259A%25D0%25BE%25D0%25BD%25D1%258E%25D1%2588%25D0%25B5%25D0%25BD%25D0%25BD%25D0%25B0%25D1%258F%2520%25D1%2583%25D0%25BB%25D0%25B8%25D1%2586%25D0%25B0%252C%252019%252F8&z=17.83" aria-label="Проложенный маршрут от метро до нашего офиса." target="_blank"></a>
+      <iframe class="contacts__map contacts__map--no-js" src="https://yandex.ru/map-widget/v1/?um=constructor%3A8dbeb7703bacea9fdbb1d24ddc1edc3a51722ed30029556e1ae3a5ff08043578&amp;source=constructor" title="Карта с местоположением нашего офиса."></iframe>
+    </div>
+
+    <a class="contacts__button button" href="#">Напишите нам</a>
+  </section>
+</div>
+
+<div class="modal" id="modal">
+  <div class="modal__sizes" id="modal-inner">
+    <h2 class="modal__title">Добавить в&nbsp;корзину</h2>
+    <p class="modal__text">Выберите размер:</p>
+    <form action="https://echo.htmlacademy.ru" method="GET">
+      <div class="modal__sizes-list">
+        <label class="modal__size">
+          <span class="modal__size-name">S</span>
+          <input class="modal__checkbox" type="checkbox" name="sizes" value="s" checked>
+        </label>
+        <label class="modal__size">
+          <span class="modal__size-name">M</span>
+          <input class="modal__checkbox" type="checkbox" name="sizes" value="m">
+        </label>
+        <label class="modal__size">
+          <span class="modal__size-name">L</span>
+          <input class="modal__checkbox" type="checkbox" name="sizes" value="l">
+        </label>
+      </div>
+      <button class="modal__size-order button" type="submit">Добавить</button>
+    </form>
+  </div>
+</div>
+{% endblock name %}
+{% block js %}
+  <script src="js/modal.js"></script>
+{% endblock %}

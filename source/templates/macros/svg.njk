@@ -1,0 +1,5 @@
+{% macro svg(class_name, icon_name, aria, width=24, height=24 ) %}
+  <svg class="{{ class_name }}" aria-label="{{ aria }}" width="{{ width }}" height="{{ height }}">
+    <use xlink:href="img/sprite.svg#{{ icon_name }}"></use>
+  </svg>
+{% endmacro %}

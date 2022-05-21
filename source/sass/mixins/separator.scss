@@ -1,0 +1,30 @@
+@mixin separator {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+
+    display: block;
+    width: 100vw;
+    height: 6px;
+    margin-left: calc((100vw - 100%) / -2);
+
+    background-image: url("../img/interface/background/zigzag-separator-mobile.svg");
+
+    @include media-min(md) {
+      height: 17px;
+
+      background-image: url("../img/interface/background/zigzag-separator-desktop.svg");
+    }
+
+    @include media-min(xl) {
+      width: 100%;
+      height: 23px;
+      margin: 0;
+
+      background-size: cover;
+    }
+  }
+}

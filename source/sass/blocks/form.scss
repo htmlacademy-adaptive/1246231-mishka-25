@@ -1,0 +1,439 @@
+.form {
+  padding: 17px 0 55px;
+
+  @include media-min(md) {
+    padding: 67px 0 50px;
+  }
+
+  @include media-min(xl) {
+    padding-top: 118px;
+  }
+}
+
+.form__lead-text {
+  margin: 0 0 29px;
+
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 24px;
+
+  @include media-min(md) {
+    margin-bottom: 15px;
+
+    font-size: 17px;
+    line-height: 30px;
+  }
+
+  @include media-min(xl) {
+    padding: 0 175px;
+  }
+}
+
+.form__legend,
+.form__sign-label {
+  position: relative;
+
+  width: fit-content;
+  min-width: 40px;
+  padding-right: 20px;
+
+  font-weight: 700;
+  line-height: 16px;
+  color: var(--cyan);
+  text-transform: uppercase;
+
+  @include media-min(md) {
+    padding-top: 16px;
+  }
+
+  @include media-min(xl) {
+    min-width: 60px;
+    padding-left: 62px;
+  }
+
+  &::after {
+    @include media-max(md) {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 100%;
+      z-index: -1;
+
+      display: block;
+      width: 100vw;
+      height: 1px;
+
+      background-color: var(--cyan);
+    }
+  }
+}
+
+.form__radio {
+  @include radio;
+
+  flex: 0 0 auto;
+  order: -1;
+}
+
+.form__checkbox {
+  @include checkbox;
+
+  order: -1;
+}
+
+.form__text {
+  @include text;
+}
+
+.form__textarea {
+  @include textarea;
+
+  margin-top: 22px;
+
+  @include media-min(md) {
+    margin: 0;
+  }
+}
+
+.form__sign {
+  font-weight: 700;
+  line-height: 18px;
+  color: var(--black);
+
+  @include media-min(md) {
+    font-size: 19px;
+    line-height: 18px;
+  }
+}
+
+.form__fieldset {
+  margin: 0;
+  padding: 0;
+
+  border: none;
+
+  &:nth-of-type(2n) {
+    @include media-min(md) {
+      background-color: var(--white-3);
+    }
+  }
+}
+
+.form__inner {
+  display: grid;
+  overflow: hidden;
+
+  @include media-min(md) {
+    padding: 50px 0;
+  }
+
+  &--type {
+    @include media-min(md) {
+      grid-template-columns: 1fr 3fr;
+    }
+
+    @include media-min(xl) {
+      grid-template-columns: 1fr 4fr 1fr;
+    }
+  }
+
+  &--color {
+    margin-top: 32px;
+
+    @include media-min(md) {
+      margin-top: 0;
+
+      grid-template-columns: 1fr 3fr;
+    }
+
+    @include media-min(xl) {
+      grid-template-columns: 1fr 5fr;
+    }
+  }
+
+  &--full-name {
+    margin-top: 33px;
+
+    @include media-min(md) {
+      margin-top: 0;
+
+      grid-template-columns: 1fr 3fr;
+    }
+
+    @include media-min(xl) {
+      grid-template-columns: 1fr 4fr 1fr;
+    }
+  }
+
+  &--contacts {
+    margin-top: 35px;
+
+    @include media-min(md) {
+      margin-top: 0;
+    }
+  }
+
+  &--comment {
+    margin-top: 35px;
+
+    @include media-min(md) {
+      margin-top: 0;
+    }
+  }
+}
+
+.form__section {
+  display: grid;
+
+  &--type {
+    padding-top: 33px;
+
+    row-gap: 11px;
+
+    @include media-min(md) {
+      padding-top: 0;
+
+      row-gap: 26px;
+    }
+  }
+
+  &--color {
+    padding-top: 25px;
+
+    row-gap: 23px;
+
+    @include media-min(md) {
+      padding-top: 0;
+
+      column-gap: 22px;
+
+      grid-template-columns: 1fr 1fr;
+      row-gap: 24px;
+    }
+
+    @include media-min(xl) {
+      column-gap: 0;
+      grid-template-columns: 30% 30% 30%;
+    }
+  }
+
+  &--full-name {
+    padding-top: 30px;
+
+    row-gap: 22px;
+
+    @include media-min(md) {
+      padding-top: 0;
+
+      row-gap: 23px;
+    }
+  }
+
+  &--contacts {
+    row-gap: 34px;
+
+    @include media-min(md) {
+      row-gap: 24px;
+    }
+
+    @include media-min(xl) {
+      grid-template-columns: 1fr 4fr 1fr;
+    }
+  }
+
+  &--comment {
+    @include media-min(xl) {
+      grid-template-columns: 1fr 4fr 1fr;
+    }
+  }
+}
+
+.form__section--type .form__label {
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+
+  @include media-min(md) {
+    column-gap: 27px;
+  }
+
+  @include media-min(xl) {
+    column-gap: 30px;
+  }
+}
+
+.form__section--color .form__label {
+  display: flex;
+  align-items: center;
+  column-gap: 23px;
+
+  @include media-min(md) {
+    column-gap: 30px;
+  }
+}
+
+.form__section--full-name .form__label {
+  display: grid;
+
+  @include media-min(md) {
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    column-gap: 25px;
+  }
+
+  @include media-min(xl) {
+    grid-column: 1/2;
+  }
+}
+
+.form__section--contacts .form__label {
+  display: grid;
+
+  position: relative;
+
+  @include media-min(md) {
+    grid-template-columns: 1fr 3fr;
+  }
+
+  @include media-min(xl) {
+    grid-column: 1/3;
+    grid-template-columns: 1fr 4fr;
+  }
+}
+
+.form__input-icon {
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+
+    display: block;
+
+    background-color: var(--black-alpha-2);
+
+    mask: var(--icon) no-repeat center / cover;
+  }
+
+  &--tel::before {
+    right: 7px;
+    top: 32px;
+
+    width: 25px;
+    height: 24px;
+
+    --icon: url("../img/interface/other/icon-phone.svg");
+
+    @include media-min(md) {
+      top: 12px;
+      right: 26px;
+    }
+
+    @include media-min(xl) {
+      right: 8px;
+    }
+  }
+
+  &--email::before {
+    top: 37px;
+    right: 3px;
+
+    width: 32px;
+    height: 21px;
+
+    --icon: url("../img/interface/other/icon-mail.svg");
+
+    @include media-min(md) {
+      top: 17px;
+      right: 22px;
+    }
+
+    @include media-min(xl) {
+      right: 4px;
+    }
+  }
+}
+
+.form__text:focus + .form__input-icon::before,
+.form__label:hover .form__input-icon::before {
+  transition: 0.1s;
+  background-color: var(--cyan-3);
+}
+
+.form__label {
+  cursor: pointer;
+  z-index: 1;
+}
+
+.form__section--comment .form__label {
+  display: grid;
+
+  @include media-min(md) {
+    grid-template-columns: 1fr 3fr;
+  }
+
+  @include media-min(xl) {
+    grid-template-columns: 1fr 4fr;
+    grid-column: 1/3;
+  }
+}
+
+.form__section--contacts .form__text {
+  padding-top: 16px;
+  padding-bottom: 16px;
+
+  @include media-min(md) {
+    padding-top: 10px;
+    padding-left: 17px;
+    padding-right: 17px;
+    padding-bottom: 14px;
+  }
+}
+
+.form__button-wrapper {
+  display: grid;
+  margin-top: 16px;
+
+  @include media-min(md) {
+    align-items: center;
+    margin-top: 5px;
+
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include media-min(xl) {
+    margin: 0;
+    grid-template-columns: 1fr repeat(2, 2fr) 1fr;
+  }
+}
+
+.form__button {
+  @include media-max(md) {
+    order: 2;
+    margin-top: 31px;
+  }
+
+  @include media-min(md) {
+    padding-right: 30px;
+    padding-left: 30px;
+
+    justify-self: start;
+  }
+
+  @include media-min(xl) {
+    grid-column: 2/3;
+  }
+}
+
+.form__reminder-text {
+  margin: 0;
+
+  font-size: 14px;
+  line-height: 16px;
+
+  @include media-min(md) {
+    font-size: 17px;
+    line-height: 30px;
+
+    justify-self: end;
+  }
+}

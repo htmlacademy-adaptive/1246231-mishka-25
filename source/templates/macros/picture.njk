@@ -1,0 +1,62 @@
+{% macro picture(
+  path_file,
+  class_name,
+  mobile_image,
+  mobile_image2x,
+  tablet_image,
+  tablet_image2x,
+  desktop_image,
+  desktop_image2x,
+  width,
+  height,
+  bp_tablet,
+  bp_desktop,
+  aria_text,
+  type='png',
+  webp=false
+  ) %}
+
+<picture>
+
+{% if tablet_image and desktop_image %}
+  {% set adaptive = [{
+    'min_width': bp_desktop,
+    'name_image': desktop_image,
+    'name_image2x': desktop_image2x
+  }, {
+    'min_width': bp_tablet,
+    'name_image': tablet_image,
+    'name_image2x': tablet_image2x
+  }] %}
+{% elif tablet_image %}
+  {% set adaptive = [{
+    'min_width': bp_tablet,
+    'name_image': tablet_image,
+    'name_image2x': tablet_image2x
+  }] %}
+{% elif desktop_image %}
+  {% set adaptive = [{
+    'min_width': bp_desktop,
+    'name_image': tablet_image,
+    'name_image2x': tablet_image2x
+  }] %}
+{% endif %}
+
+  {% for image in adaptive %}
+    {{source(image.min_width, image.name_image, image.name_image2x, type, webp, path_file ) }}
+  {% endfor %}
+
+  {% if webp %}
+    <source type="image/webp" srcset="{{ path_file }}{{ mobile_image }}.webp 1x, {{ path_file }}{{ mobile_image2x }}.webp  2x">
+  {% endif %}
+  <img class="{{ class_name }}" src="{{ path_file }}{{ mobile_image }}.{{ type }}" {% if mobile_image2x %}srcset="{{ path_file }}{{ mobile_image2x }}.{{ type }} 2x"{% endif %} width="{{ width }}" height="{{ height }}" alt="{{ aria_text }}">
+
+</picture>
+{% endmacro %}
+
+{% macro source(min_width, name_image, name_image2x, type, webp, path_file ) %}
+  {% if webp %}
+    <source type="image/webp" media="(min-width: {{ min_width }}px)" srcset="{{ path_file }}{{ name_image }}.webp 1x, {{ path_file }}{{ name_image2x }}.webp  2x">
+  {% endif %}
+  <source type="image/{{ type }}" media="(min-width: {{ min_width }}px)" srcset="{% if name_image2x %}{{ path_file }}{{ name_image }}.{{ type }} 1x, {{ path_file }}{{ name_image2x }}.{{ type }}  2x{% else %}{{ name_image }}{% endif %}">
+{% endmacro %}

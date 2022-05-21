@@ -1,0 +1,181 @@
+.contacts {
+  display: grid;
+  margin-top: 38px;
+  padding-bottom: 39px;
+
+  @include media-min(md) {
+    margin-top: 70px;
+    padding-bottom: 57px;
+  }
+
+  @include media-min(xl) {
+    padding-bottom: 105px;
+
+    column-gap: 58px;
+
+    grid-template-columns: repeat(6, 1fr) auto;
+    grid-template-rows: repeat(3, min-content);
+  }
+}
+
+.contacts__title {
+  @include title;
+
+  margin: 0 0 27px;
+
+  @include media-min(md) {
+    position: relative;
+
+    margin-bottom: 48px;
+  }
+
+  @include media-min(xl) {
+    margin: 80px 0 34px;
+
+    grid-column: 2/4;
+    grid-row: 1/2;
+  }
+
+  &::before {
+    @include media-min(md) {
+      content: "";
+      position: absolute;
+      top: -25px;
+      right: 3px;
+
+      display: block;
+      width: 47px;
+      height: 82px;
+
+      background-image: url("../img/interface/other/icon-flag.svg");
+    }
+
+    @include media-min(xl) {
+      top: -18px;
+      left: -112px;
+    }
+  }
+}
+
+.contacts__list {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 33px;
+
+  font-size: 14px;
+  line-height: 30px;
+
+  @include media-min(md) {
+    font-size: 17px;
+    margin: 0 0 18px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include media-min(xl) {
+    grid-template-columns: 1fr;
+    grid-column: 2/4;
+    grid-row: 2/3;
+    margin-bottom: 55px;
+  }
+}
+
+.contacts__row {
+  display: flex;
+  margin-bottom: 30px;
+  max-width: 300px;
+}
+
+.contacts__row-value {
+  margin-left: 33px;
+
+  @include media-min(md) {
+    margin-left: 25px;
+  }
+}
+
+.contacts__link {
+  padding-bottom: 2px;
+
+  color: var(--grey);
+  text-decoration: none;
+
+  border-bottom: 1px solid var(--cyan-3);
+
+  transition: all 0.3s ease;
+
+  @include media-min(xl) {
+    padding-bottom: 8px;
+  }
+
+  &:hover {
+    color: var(--cyan-3);
+  }
+
+  &:active {
+    border-color: var(--cyan-4-alpha-1);
+  }
+}
+
+.contacts__map-wrapper {
+  position: relative;
+
+  width: 100vw;
+  height: 454px;
+  margin-bottom: 42px;
+  margin-left: calc((100vw - 100%) / -2);
+
+  background-image: url("../img/interface/background/map.png");
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @include media-min(md) {
+    height: 457px;
+    margin-bottom: 55px;
+  }
+
+  @include media-min(xl) {
+    width: 527px;
+    margin: 0;
+
+    grid-column: 4/-1;
+    grid-row: 1/-1;
+  }
+}
+
+.contacts__map--no-js {
+  display: none;
+}
+
+.contacts__map {
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  border: none;
+}
+
+.contacts__map-link {
+  position: absolute;
+
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.contacts__button {
+  justify-self: stretch;
+
+  @include media-min(md) {
+    width: 194px;
+
+    justify-self: center;
+  }
+
+  @include media-min(xl) {
+    grid-column: 2/4;
+    grid-row: 3/4;
+    justify-self: start;
+  }
+}

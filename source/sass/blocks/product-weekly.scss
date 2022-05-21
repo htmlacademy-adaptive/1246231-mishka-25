@@ -1,0 +1,236 @@
+.product-weekly {
+  position: relative;
+
+  display: grid;
+  margin-top: 31px;
+  padding-bottom: 41px;
+
+  font-size: 15px;
+
+  @include media-min(md) {
+    margin-top: 51px;
+    padding-bottom: 70px;
+
+    column-gap: 42px;
+
+    grid-template-columns: repeat(4, 1fr) auto;
+    grid-template-rows: repeat(3, min-content);
+  }
+
+  @include media-min(xl) {
+    margin-top: 72px;
+    padding-bottom: 95px;
+
+    column-gap: 58px;
+
+    grid-template-columns: repeat(6, 1fr) auto;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+
+    display: block;
+    width: 100vw;
+    height: 6px;
+    margin-left: calc((100vw - 100%) / -2);
+
+    background-image: url("../img/interface/background/zigzag-separator-mobile.svg");
+
+    @include media-min(md) {
+      height: 17px;
+
+      background-image: url("../img/interface/background/zigzag-separator-desktop.svg");
+    }
+
+    @include media-min(xl) {
+      width: 100%;
+      height: 23px;
+      margin: 0;
+
+      background-size: cover;
+    }
+  }
+}
+
+.product-weekly__title-row {
+  margin-bottom: 18px;
+
+  @include media-min(md) {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 35px;
+
+    grid-column: 1/-1;
+  }
+
+  @include media-min(xl) {
+    z-index: 1;
+
+    justify-content: start;
+    margin-top: 60px;
+    margin-bottom: 33px;
+
+    column-gap: 11px;
+
+    grid-row: 1/2;
+  }
+}
+
+.product-weekly__title {
+  margin: 0 0 3px;
+
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 30px;
+
+  @include media-min(md) {
+    font-size: 43px;
+    line-height: 50px;
+  }
+
+  @include media-min(xl) {
+    order: 2;
+
+    font-size: 53px;
+    line-height: 57px;
+  }
+}
+
+.product-weekly__attention {
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 20px;
+  color: var(--cyan);
+  text-transform: uppercase;
+
+  @include media-min(md) {
+    width: min-content;
+    padding: 7px 27px;
+
+    font-size: 17px;
+    line-height: 17px;
+    text-align: center;
+  }
+
+  @include media-min(xl) {
+    padding: 9px 46px;
+  }
+}
+
+.product-weekly__text {
+  margin: 0 0 28px;
+
+  line-height: 24px;
+
+  @include media-min(md) {
+    margin-bottom: 48px;
+
+    font-size: 17px;
+    line-height: 30px;
+  }
+
+  @include media-min(xl) {
+    margin-bottom: 60px;
+  }
+}
+
+.product-weekly__description {
+  margin-bottom: 21px;
+
+  @include media-min(md) {
+    margin-bottom: 50px;
+
+    grid-column: 1/3;
+  }
+
+  @include media-min(xl) {
+    margin-bottom: 104px;
+
+    grid-column: 2/4;
+    grid-row: 2/3;
+  }
+}
+
+.product-weekly__description-row {
+  display: grid;
+  margin-bottom: 20px;
+
+  line-height: 20px;
+  column-gap: 7%;
+
+  grid-template-columns: 1fr 2fr;
+
+  @include media-min(md) {
+    column-gap: 11%;
+
+    grid-template-columns: 1fr 3fr;
+  }
+}
+
+.product-weekly__value {
+  margin: 0;
+}
+
+.product-weekly__image-wrapper {
+  @include media-max(md) {
+    margin-bottom: 26px;
+  }
+
+  @include media-min(md) {
+    align-self: end;
+
+    grid-column: 3/-1;
+    grid-row: 2/-1;
+  }
+
+  @include media-min(xl) {
+    grid-column: 4/-1;
+    grid-row: 1/-1;
+  }
+}
+
+.product-weekly__image {
+  width: 100%;
+  height: auto;
+}
+
+.product-weekly__order {
+  display: flex;
+  flex-direction: column;
+
+  @include media-min(md) {
+    align-self: end;
+
+    grid-column: 1/3;
+  }
+
+  @include media-min(xl) {
+    grid-column: 2/4;
+    grid-row: 3/4;
+  }
+}
+
+.product-weekly__price {
+  align-self: center;
+  margin-bottom: 12px;
+
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 24px;
+
+  @include media-min(md) {
+    margin-bottom: 17px;
+
+    font-size: 20px;
+  }
+}
+
+.product-weekly__button {
+  margin-top: 12px;
+
+  @include media-min(md) {
+    margin-top: 16px;
+  }
+}
