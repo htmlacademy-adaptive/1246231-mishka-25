@@ -23,7 +23,16 @@
     background-color: var(--grey);
   }
 
+  &:focus {
+    color: var(--white);
+
+    background-color: var(--grey);
+    outline: none;
+  }
+
   &:active {
     color: var(--white-alpha-3);
+
+    background-color: var(--grey);
   }
 }

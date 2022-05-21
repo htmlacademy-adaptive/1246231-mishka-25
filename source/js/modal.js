@@ -1,6 +1,6 @@
 let modal = document.getElementById('modal');
 let modalInner = document.getElementById('modal-inner');
-let buttonsOrder = document.querySelectorAll(".button-order");
+let buttonsOrder = document.querySelectorAll('.button-order');
 
 // обработка каждой кнопки, убирает стандартное действие у ссылки
 for (var i = 0; i < buttonsOrder.length; i++) {

@@ -11,8 +11,8 @@ hamburger.addEventListener('click', () => {
 })
 
 // Убираю класс, если пользователь ресайзит  окно при открытом мобильном меню
-window.addEventListener("resize", function () {
-  if (window.matchMedia("(min-width: 768px)").matches) {
+window.addEventListener('resize', function () {
+  if (window.matchMedia('(min-width: 768px)').matches) {
     navigation.classList.remove('navigation--open');
     bodyOverflow.classList.remove('show-main-nav--active', 'show-main-nav');
   } else {
@@ -20,12 +20,12 @@ window.addEventListener("resize", function () {
   }
 });
 
-// Это сделал для того, чтобы убрать "мерцание" пунктов меню при ресайзе с планшета на мобильный
-window.addEventListener("resize", function () {
-  if (window.matchMedia("(min-width: 320px)").matches) {
+// Это сделал для того, чтобы убрать 'мерцание' пунктов меню при ресайзе с планшета на мобильный
+window.addEventListener('resize', function () {
+  if (window.matchMedia('(min-width: 320px)').matches) {
     navigation.classList.add('navigation--mobile');
   }
-  if (window.matchMedia("(min-width: 768px)").matches) {
+  if (window.matchMedia('(min-width: 768px)').matches) {
     navigation.classList.remove('navigation--mobile');
   }
 });
