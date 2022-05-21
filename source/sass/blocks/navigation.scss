@@ -45,8 +45,7 @@
 }
 
 // класс для мобильного меню, добавляемый при клике
-.navigation--open,
-.navigation--no-js {
+.navigation--open {
   visibility: visible;
 
   pointer-events: auto;
@@ -56,6 +55,14 @@
 
     transition-duration: 0.8s;
   }
+}
+
+// класс для мобильного меню, если нет js
+.navigation--no-js {
+  position: static;
+  visibility: visible;
+  pointer-events: auto;
+  overflow: unset;
 }
 
 .navigation--open .navigation__item,

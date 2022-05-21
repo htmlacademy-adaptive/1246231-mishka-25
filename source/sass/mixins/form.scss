@@ -112,7 +112,6 @@
 
   font-weight: inherit;
   font-size: inherit;
-  line-height: 18px;
   font-family: inherit;
 
   background-color: inherit;
@@ -122,15 +121,9 @@
   transition: all 0.3s ease;
 
   @include media-min(md) {
-    padding-right: 19px;
-    padding-bottom: 11px;
-    padding-left: 19px;
+    padding: 12px 19px;
 
     font-size: 19px;
-  }
-
-  @include media-min(md) {
-    padding: 12px 19px;
   }
 
   &:placeholder-shown {
