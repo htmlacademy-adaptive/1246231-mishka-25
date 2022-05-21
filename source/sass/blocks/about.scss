@@ -1,0 +1,146 @@
+.about {
+  margin: 31px 0 58px;
+
+  @include media-min(md) {
+    margin: 54px 0 82px;
+  }
+
+  @include media-min(xl) {
+    display: grid;
+    margin: 70px 0 90px;
+
+    column-gap: 58px;
+
+    grid-template-columns: repeat(6, 1fr) auto;
+  }
+}
+
+.about__title {
+  @include title;
+
+  margin-top: 0;
+
+  @include media-min(xl) {
+    margin-bottom: 31px;
+
+    grid-column: 2/6;
+  }
+}
+
+.about__features {
+  display: grid;
+  row-gap: 21px;
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+
+  @include media-min(md) {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 47px;
+  }
+
+  @include media-min(xl) {
+    column-gap: 57px;
+
+    grid-column: 2/6;
+    row-gap: 48px;
+  }
+}
+
+.about__features-item {
+  &::before {
+    content: "";
+
+    display: block;
+    width: 50px;
+    height: 50px;
+
+    background-repeat: no-repeat;
+  }
+}
+
+.about__features-item--eco {
+  @include media-max(md) {
+    order: 1;
+  }
+
+  &::before {
+    background-image: url("../img/interface/other/feature-eco.svg");
+    background-position: 8px 8px;
+  }
+}
+
+.about__features-item--hand {
+  @include media-max(md) {
+    order: 4;
+  }
+
+  &::before {
+    background-image: url("../img/interface/other/feature-hand.svg");
+    background-position: 3px 11px;
+  }
+}
+
+.about__features-item--style {
+  @include media-max(md) {
+    order: 2;
+  }
+
+  &::before {
+    background-image: url("../img/interface/other/feature-style.svg");
+    background-position: 0 9px;
+  }
+}
+
+.about__features-item--homeland {
+  @include media-max(md) {
+    order: 5;
+  }
+
+  &::before {
+    background-image: url("../img/interface/other/feature-homeland.svg");
+    background-position: 0 11px;
+    margin-left: -6px;
+    width: 55px;
+  }
+}
+
+.about__features-item--likes {
+  @include media-max(md) {
+    order: 3;
+  }
+
+  &::before {
+    background-image: url("../img/interface/other/feature-likes.svg");
+    background-position: 7px 14px;
+  }
+}
+
+.about__features-item--gift {
+  @include media-max(md) {
+    order: 6;
+  }
+
+  &::before {
+    background-image: url("../img/interface/other/feature-gift.svg");
+    background-position: 3px 10px;
+  }
+}
+
+.about__text {
+  max-width: 250px;
+  margin: 12px 0 0;
+
+  font-weight: 700;
+  line-height: 20px;
+  color: var(--black);
+
+  @include media-min(md) {
+    max-width: 300px;
+    margin-top: 13px;
+
+    font-size: 20px;
+    line-height: 22px;
+  }
+}

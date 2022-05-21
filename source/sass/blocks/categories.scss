@@ -1,0 +1,139 @@
+.catagories {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  @include media-min(md) {
+    flex-direction: row;
+  }
+}
+
+.categories__item {
+  position: relative;
+  z-index: 1;
+
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 103px;
+
+  @include media-min(md) {
+    width: 50%;
+    min-height: 119px;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    opacity: 0.5;
+    display: block;
+
+    transform: translateY(-50%);
+    background-repeat: no-repeat;
+  }
+
+  &::after {
+    @include media-max(md) {
+      content: "";
+      position: absolute;
+      top: 0;
+      z-index: -1;
+
+      display: block;
+      width: 100vw;
+      height: 100%;
+      margin-left: calc((100vw - 100%) / -2);
+    }
+  }
+
+  &:hover::before {
+    opacity: 0.7;
+  }
+
+  &:active::before {
+    opacity: 0.3;
+  }
+}
+
+.categories__item--one {
+  background-color: var(--cyan);
+
+  &::before {
+    right: 4px;
+
+    width: 42px;
+    height: 62px;
+
+    background-image: url("../img/interface/background/interior.svg");
+
+    @include media-min(md) {
+      right: 35px;
+    }
+  }
+
+  &::after {
+    background-color: inherit;
+  }
+
+  &:hover {
+    background-color: var(--cyan-5);
+  }
+}
+
+.categories__item--two {
+  background-color: var(--cyan-2);
+
+  &::before {
+    right: -3px;
+
+    width: 60px;
+    height: 62px;
+
+    background-image: url("../img/interface/background/toy.svg");
+
+    @include media-min(md) {
+      right: 33px;
+    }
+  }
+
+  &::after {
+    background-color: inherit;
+  }
+
+  &:hover {
+    background-color: var(--cyan-4);
+  }
+}
+
+.categories__link {
+  display: block;
+  height: 100%;
+  padding: 25px 170px 34px 0;
+
+  text-decoration: none;
+
+  transition: all 0.3s ease;
+
+  @include media-min(md) {
+    padding-left: 36px;
+  }
+
+  &:hover {
+    padding-bottom: 39px;
+  }
+}
+
+.categories__name {
+  max-width: 130px;
+  margin: 0;
+
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 24px;
+  color: var(--white);
+
+  @include media-min(md) {
+    font-size: 20px;
+    line-height: 30px;
+  }
+}

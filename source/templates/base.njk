@@ -1,0 +1,140 @@
+{% from 'macros/svg.njk' import svg %}
+{% from 'macros/picture.njk' import picture %}
+{% set bp_tablet = 768 %}
+{% set bp_desktop = 1150 %}
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <link rel="preload" href="fonts/opensans.woff2" type="font/woff2" as="font" crossorigin="anonymous">
+  <link rel="preload" href="fonts/opensansbold.woff2" type="font/woff2" as="font" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Мишка - магазин милых и приятных вязанных изделий ручной работы.">
+  <meta name="keywords" content="Вязанные изделия, вязанные изделия ручной работы, ручная работа, товары ручной работы.">
+  <title>{{ title }}</title>
+  <link rel="stylesheet" href="css/style.min.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="img/favicons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="img/favicons/favicon@180.png" type="image/png">
+  <link rel="manifest" href="manifest.webmanifest">
+</head>
+
+<body class="show-main-nav">
+
+  <header class="header">
+    <div class="container">
+      <div class="header__inner">
+        <a class="header__logo logo" href="index.html">
+          <picture>
+            <source media="(min-width: 1150px)" srcset="img/interface/logo/logo-desktop.svg">
+            <source media="(min-width: 768px)" srcset="img/interface/logo/logo-tablet.svg">
+            <img class="logo__image" src="img/interface/logo/logo-mobile.svg" width="86" height="35" alt="Логотип магазина мишка.">
+          </picture>
+        </a>
+
+        <nav class="navigation navigation--no-js navigation--mobile">
+          {% set navigation = [{
+            'ul': [{
+              'modifier': 'main',
+              'list_item': [{
+                'text': 'Каталог товаров',
+                'href': 'catalog.html'
+              }, {
+                'text': 'Вязание на заказ',
+                'href': 'form.html'
+              }]
+            }, {
+              'modifier': 'user',
+              'list_item': [{
+                'text': 'Поиск по сайту',
+                'icon': 'search'
+              }, {
+                'text': 'Корзина: пока пуста',
+                'icon': 'cart'
+              }]
+            }, {
+              'modifier': 'more',
+              'list_item': [{
+                'text': 'Новые поступления'
+              }, {
+                'text': 'Распродажа'
+              }]
+            }]
+          }] %}
+
+          {% for nav in navigation %}
+            {% for ul in nav.ul %}
+              <ul class="navigation__list {% if ul.modifier %}navigation__list--{{ ul.modifier }}{% endif %}">
+                {% for list_item in ul.list_item %}
+                  <li class="navigation__item">
+                    <a class="navigation__link" href="{% if list_item.href %}{{ list_item.href }}{% else %}#{% endif %}">
+                      <span class="navigation__text{% if list_item.icon %} navigation__text--{{ list_item.icon }}{% endif %}">{{ list_item.text }}</span>
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endfor %}
+          {% endfor %}
+
+          <p class="navigation__advantage">Бесплатная доставка по России</p>
+        </nav class="navigation">
+
+        <button class="header__hamburger header__hamburger--no-js">
+          <span class="header__hamburger-inner"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    {% block name %}{% endblock name %}
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <a class="footer__logo" href="index.html">
+          {{ svg('footer__logo-img', 'logo-footer', 'На главную.', 102, 34) }}
+        </a>
+
+        <ul class="footer__social-list social-list">
+          {% set social_links = [{
+            'svg': 'icon-vk',
+            'url': 'vk.com/htmlacademy',
+            'aria': 'Мы в Вконтакте.'
+          }, {
+            'svg': 'icon-you',
+            'url': 'www.youtube.com/c/HTMLAcademyRUS',
+            'aria': 'Мы в Ютубе.'
+          }, {
+            'svg': 'icon-tg',
+            'url': 't.me/htmlacademy',
+            'aria': 'Мы в Телеграмме.'
+          }] %}
+
+          {% for link in social_links %}
+            <li class="social-list__item">
+              <a class="social-list__link" href="https://{{ link.url }}" target="_blank">
+                {{ svg('social-list__image', link.svg, link.aria, 30, 22) }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+
+        <a class="footer__madeby-link" href="https://htmlacademy.ru/intensive/adaptive" target="_blank">
+          <span class="footer__madeby-text">Разработано</span>
+          {{ svg('footer__madeby-img', 'icon-academy', 'HTML academy', 27, 34) }}
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/mobile-menu.js"></script>
+  <script src="js/no-script.js"></script>
+  {% block js %}{% endblock %}
+</body>
+
+</html>

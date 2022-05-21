@@ -1,0 +1,176 @@
+{% extends 'base.njk' %}
+{% set title = 'Мишка: каталог' %}
+
+{% block name %}
+<div class="intro-inner">
+  <h1 class="intro-inner__title">Каталог товаров</h1>
+</div>
+
+<div class="container">
+  <section class="catalog">
+    <div class="catalog__list">
+      {% set catalog = [{
+        'title': 'Зайчик-попрыгайчик',
+        'price': '1 200 руб.',
+        'features': [{
+          'definition': 'Рост',
+          'value': '30 см'
+        }, {
+          'definition': 'вес',
+          'value': '200 г'
+        }],
+        'images': [{
+          'image_mobile1x': 'rabbit-mobile@1x',
+          'image_mobile2x': 'rabbit-mobile@2x',
+          'image_tablet1x': 'rabbit-tablet@1x',
+          'image_tablet2x': 'rabbit-tablet@2x',
+          'image_desktop1x': 'rabbit-desktop@1x',
+          'image_desktop2x': 'rabbit-desktop@2x'
+        }]
+      }, {
+        'title': 'Корзинка для белья',
+        'price': '690 руб.',
+        'features': [{
+          'definition': 'Диаметр',
+          'value': '15 см'
+        }, {
+          'definition': 'высота',
+          'value': '10 см'
+        }],
+        'images': [{
+          'image_mobile1x': 'basket-mobile@1x',
+          'image_mobile2x': 'basket-mobile@2x',
+          'image_tablet1x': 'basket-tablet@1x',
+          'image_tablet2x': 'basket-tablet@2x',
+          'image_desktop1x': 'basket-desktop@1x',
+          'image_desktop2x': 'basket-desktop@2x'
+        }]
+      }, {
+        'title': 'Большая корзинка для игрушек',
+        'price': '1 500 руб.',
+        'features': [{
+          'definition': 'Диаметр',
+          'value': '30 см'
+        }, {
+          'definition': 'высота',
+          'value': '30 см'
+        }],
+        'images': [{
+          'image_mobile1x': 'big-basket-mobile@1x',
+          'image_mobile2x': 'big-basket-mobile@2x',
+          'image_tablet1x': 'big-basket-tablet@1x',
+          'image_tablet2x': 'big-basket-tablet@2x',
+          'image_desktop1x': 'big-basket-desktop@1x',
+          'image_desktop2x': 'big-basket-desktop@2x'
+        }]
+      }] %}
+
+      {% for product in catalog %}
+        <article class="product-item">
+          <a class="product-item__image-link" href="#" aria-label="Заказ продукта.">
+            {% for image in product.images %}
+              {{ picture(
+                path_file='img/content/catalog/',
+                class_name='product-item__image',
+                mobile_image=image.image_mobile1x,
+                mobile_image2x=image.image_mobile2x,
+                tablet_image=image.image_tablet1x,
+                tablet_image2x=image.image_tablet2x,
+                desktop_image=image.image_desktop1x,
+                desktop_image2x=image.image_desktop2x,
+                width=260,
+                height=195,
+                bp_tablet=bp_tablet,
+                bp_desktop=bp_desktop,
+                type='jpg',
+                webp=true
+              ) }}
+            {% endfor %}
+          </a>
+          <div class="product-item__body">
+
+            <h2 class="product-item__title">
+              <a class="product-item__link" href="#">{{ product.title }}</a>
+            </h2>
+
+            <dl class="product-item__description">
+              {% for feature in product.features %}
+                <div class="product-item__row-description">
+                  <dt class="product-item__definition">{{ feature.definition }}</dt>
+                  <dd class="product-item__value">{{ feature.value }}</dd>
+                </div>
+              {% endfor %}
+            </dl>
+
+            <div class="product-item__row-order">
+              <span class="product-item__price">{{ product.price }}</span>
+              <a class="product-item__order button-order" href="#">
+                {{ svg('product-item__order-img', 'icon-order-cart', 'Заказать.', 21, 21) }}
+              </a>
+            </div>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="production">
+    <div class="production__inner">
+      <div class="production__video">
+        {{ picture(
+          path_file='img/interface/player/',
+          class_name='production__video-img',
+          mobile_image='video-preview-mobile@1x',
+          mobile_image2x='video-preview-mobile@2x',
+          tablet_image='video-preview-tablet@1x',
+          tablet_image2x='video-preview-tablet@2x',
+          desktop_image='video-preview-desktop@1x',
+          desktop_image2x='video-preview-desktop@2x',
+          width=260,
+          height=150,
+          bp_tablet=bp_tablet,
+          bp_desktop=bp_desktop,
+          type='jpg'
+        ) }}
+
+        <div class="production__video-controls">
+          <button class="production__video-play" aria-label="Включить видео."></button>
+        </div>
+      </div>
+
+      <h2 class="production__title">Процесс производства</h2>
+
+      <p class="production__description">По просьбам наших любимых фолловеров мы сняли для вас подробное видео о том, как появляются наши товары.</p>
+
+      <a class="production__order-button button" href="#">Сделать заказ</a>
+    </div>
+  </section>
+</div>
+
+<div class="modal" id="modal">
+  <div class="modal__sizes" id="modal-inner">
+    <h2 class="modal__title">Добавить в&nbsp;корзину</h2>
+    <p class="modal__text">Выберите размер:</p>
+    <form action="https://echo.htmlacademy.ru" method="GET">
+      <div class="modal__sizes-list">
+        <label class="modal__size">
+          <span class="modal__size-name">S</span>
+          <input class="modal__checkbox" type="checkbox" name="sizes" value="s" checked>
+        </label>
+        <label class="modal__size">
+          <span class="modal__size-name">M</span>
+          <input class="modal__checkbox" type="checkbox" name="sizes" value="m">
+        </label>
+        <label class="modal__size">
+          <span class="modal__size-name">L</span>
+          <input class="modal__checkbox" type="checkbox" name="sizes" value="l">
+        </label>
+      </div>
+      <button class="modal__size-order button" type="submit">Добавить</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+{% block js %}
+  <script src="js/modal.js"></script>
+{% endblock %}

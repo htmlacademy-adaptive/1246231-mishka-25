@@ -1,0 +1,17 @@
+.social-list {
+  display: flex;
+  list-style: none;
+  column-gap: 27px;
+}
+
+.social-list__link:hover {
+  fill: var(--cyan-4);
+}
+
+.social-list__link:active {
+  opacity: 0.3;
+}
+
+.social-list__image {
+  transition: all 0.5s ease;
+}

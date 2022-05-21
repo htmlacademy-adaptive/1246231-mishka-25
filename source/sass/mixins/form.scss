@@ -1,0 +1,180 @@
+@mixin radio {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+
+  border: 2px solid var(--grey);
+  border-radius: 50%;
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+
+  appearance: none;
+
+  @include media-min(md) {
+    width: 50px;
+    height: 50px;
+  }
+
+  &::before {
+    content: "";
+
+    display: block;
+    width: 14px;
+    height: 14px;
+    margin: auto;
+
+    background-color: var(--cyan-3);
+    border-radius: 50%;
+    opacity: 0;
+
+    transition: opacity 0.2s ease-in-out;
+
+    @include media-min(md) {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &:checked::before {
+    opacity: 1;
+  }
+
+  &:hover,
+  &:focus {
+    border-color: var(--cyan-3);
+    outline: none;
+  }
+
+  &:active {
+    border-color: var(--black-alpha-3);
+  }
+}
+
+@mixin checkbox {
+  display: flex;
+  width: 38px;
+  height: 38px;
+  margin: 0;
+
+  border: 2px solid var(--grey);
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+
+  appearance: none;
+
+  @include media-min(md) {
+    width: 52px;
+    height: 52px;
+  }
+
+  &::before {
+    content: "";
+
+    display: block;
+    width: 24px;
+    height: 17px;
+    margin: auto;
+
+    background-image: url("../img/interface/other/icon-tick.svg");
+    background-size: contain;
+    opacity: 0;
+
+    transition: opacity 0.2s ease-in-out;
+
+    @include media-min(md) {
+      width: 32px;
+      height: 22px;
+    }
+  }
+
+  &:checked::before {
+    opacity: 1;
+  }
+
+  &:hover,
+  &:focus {
+    border-color: var(--cyan-3);
+    outline: none;
+  }
+
+  &:active {
+    border-color: var(--black-alpha-3);
+  }
+}
+
+
+@mixin text {
+  padding: 13px 0;
+  padding-left: 0;
+
+  font-weight: inherit;
+  font-size: inherit;
+  line-height: 18px;
+  font-family: inherit;
+
+  background-color: inherit;
+  border: none;
+  border-bottom: 2px solid var(--black);
+
+  transition: all 0.3s ease;
+
+  @include media-min(md) {
+    padding-right: 19px;
+    padding-bottom: 11px;
+    padding-left: 19px;
+
+    font-size: 19px;
+  }
+
+  @include media-min(md) {
+    padding: 12px 19px;
+  }
+
+  &:placeholder-shown {
+    color: var(--black-alpha-3);
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    border-color: var(--cyan-3);
+    outline: none;
+  }
+}
+
+
+@mixin textarea {
+  box-sizing: border-box;
+  height: 142px;
+  margin: 0;
+  padding: 15px;
+
+  font-weight: inherit;
+  font-size: inherit;
+  line-height: 18px;
+  font-family: inherit;
+
+  border: 2px solid var(--grey);
+
+  transition: all 0.3s ease;
+
+  resize: none;
+
+  @include media-min(md) {
+    font-size: 19px;
+  }
+
+  &:placeholder-shown {
+    color: var(--black-alpha-3);
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    border-color: var(--cyan-3);
+    outline: none;
+  }
+}

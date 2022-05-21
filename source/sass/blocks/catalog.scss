@@ -1,0 +1,27 @@
+.catalog {
+  margin-top: 30px;
+
+  @include media-min(md) {
+    margin-top: 80px;
+  }
+
+  @include media-min(xl) {
+    margin-top: 131px;
+  }
+}
+
+.catalog__list {
+  display: grid;
+
+  row-gap: 30px;
+
+  @include media-min(md) {
+    row-gap: 54px;
+  }
+
+  @include media-min(xl) {
+    column-gap: 51px;
+
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

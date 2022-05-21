@@ -1,0 +1,78 @@
+.hero {
+  position: relative;
+
+  margin-top: -18px;
+
+  background: url("../img/interface/background/hero-mobile@1x.jpg") no-repeat top var(--white-2);
+
+  @media (min-resolution: 2dppx) {
+    background-image: url("../img/interface/background/hero-mobile@2x.jpg");
+    background-size: 569px 373px;
+  }
+
+  @include media-min(md) {
+    background: url("../img/interface/background/hero-desktop@1x.jpg") no-repeat top var(--white-2);
+
+    @media (min-resolution: 2dppx) {
+      background-image: url("../img/interface/background/hero-desktop@2x.jpg");
+      background-size: 1150px 746px;
+    }
+  }
+
+  &::before {
+    @include media-min(md) {
+      content: "";
+      position: absolute;
+      bottom: -12px;
+      z-index: 2;
+
+      display: block;
+      width: 100%;
+      height: 34px;
+
+      background: url("../img/interface/background/zigzag-main-tablet.svg") repeat-x bottom;
+    }
+
+    @include media-min(xl) {
+      bottom: -20px;
+
+      background: url("../img/interface/background/zigzag-main-desktop.svg") repeat-x bottom;
+    }
+  }
+}
+
+.hero__inner {
+  display: flex;
+  flex-direction: column;
+  min-height: 506px;
+
+  @include media-min(md) {
+    min-height: 746px;
+  }
+}
+
+.hero__title {
+  margin-top: 90px;
+  margin-bottom: auto;
+
+  font-weight: 700;
+  font-size: 27px;
+  line-height: 30px;
+  text-align: center;
+  color: var(--black);
+
+  @include media-min(md) {
+    margin-top: 155px;
+
+    font-size: 43px;
+    line-height: 50px;
+  }
+
+  @include media-min(xl) {
+    margin-top: 160px;
+    padding: 0 100px;
+
+    font-size: 53px;
+    line-height: 57px;
+  }
+}

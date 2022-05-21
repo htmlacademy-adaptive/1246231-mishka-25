@@ -1,0 +1,190 @@
+{% extends 'base.njk' %}
+{% set title = 'Мишка: вязание на заказ' %}
+
+{% block name %}
+<div class="intro-inner">
+  <h1 class="intro-inner__title">Вязание на заказ</h1>
+</div>
+
+<form class="form" action="https://echo.htmlacademy.ru" method="GET">
+  {% set form = [{
+    'lead_text': 'Мы будем рады воплотить в жизнь ваши пожелания! Заполните простую форму заказа и мы свяжемся с вами, чтобы уточнить детали.',
+    'fieldsets': [{
+      'modifier': 'type',
+      'legend': 'Тип',
+      'label': 'sign',
+      'inputs': [{
+        'text': 'Аксессуар для интерьера',
+        'type': 'radio',
+        'class': 'radio',
+        'name': 'type',
+        'id': 'type-0',
+        'value': 'аксессуар',
+        'checked': true
+      }, {
+        'text': 'Детская игрушка',
+        'type': 'radio',
+        'class': 'radio',
+        'name': 'type',
+        'id': 'type-1',
+        'value': 'игрушка'
+      }]
+    }, {
+      'modifier': 'color',
+      'legend': 'Цвет',
+      'label': 'sign',
+      'inputs': [{
+        'text': 'Белый',
+        'type': 'checkbox',
+        'class': 'checkbox',
+        'name': 'color',
+        'id': 'color-0',
+        'value': 'белый',
+        'checked': true
+      }, {
+        'text': 'Серый',
+        'type': 'checkbox',
+        'class': 'checkbox',
+        'name': 'color',
+        'id': 'color-1',
+        'value': 'серый',
+        'checked': true
+      }, {
+        'text': 'Тиффани',
+        'type': 'checkbox',
+        'class': 'checkbox',
+        'name': 'color',
+        'id': 'color-2',
+        'value': 'тиффани'
+      }, {
+        'text': 'Черный',
+        'type': 'checkbox',
+        'class': 'checkbox',
+        'name': 'color',
+        'id': 'color-3',
+        'value': 'чёрный'
+      }, {
+        'text': 'Розовый',
+        'type': 'checkbox',
+        'class': 'checkbox',
+        'name': 'color',
+        'id': 'color-4',
+        'value': 'розовый'
+      }, {
+        'text': 'Оранжевый',
+        'type': 'checkbox',
+        'class': 'checkbox',
+        'name': 'color',
+        'id': 'color-5',
+        'value': 'оранжевый'
+      }]
+    }, {
+      'modifier': 'full-name',
+      'legend': 'Фио',
+      'label': 'sign',
+      'inputs': [{
+        'text': 'Имя:',
+        'type': 'text',
+        'class': 'text',
+        'name': 'name',
+        'id': 'name-user',
+        'placeholder': 'Введите ваше имя*',
+        'required': true
+      }, {
+        'text': 'Фамилия:',
+        'type': 'text',
+        'class': 'text',
+        'name': 'surname',
+        'id': 'surname-user',
+        'placeholder': 'Укажите фамилию*',
+        'required': true
+      }, {
+        'text': 'Отчество:',
+        'type': 'text',
+        'class': 'text',
+        'name': 'patronymic',
+        'id': 'patronymic-user',
+        'placeholder': 'Отчество, если желаете',
+        'required': true
+      }]
+    }, {
+      'modifier': 'contacts',
+      'label': 'sign-label',
+      'inputs': [{
+        'text': 'Тел',
+        'type': 'tel',
+        'class': 'text',
+        'name': 'telephone',
+        'id': 'telephone-user',
+        'placeholder': '+7 ХХХ ХХХ ХХ ХХ*',
+        'icon': true,
+        'required': true
+      }, {
+        'text': 'E-mail',
+        'type': 'email',
+        'class': 'text',
+        'name': 'email',
+        'id': 'email-user',
+        'placeholder': 'Ваш Email*',
+        'icon': true,
+        'required': true
+      }]
+    }, {
+      'modifier': 'comment',
+      'label': 'sign-label',
+      'textarea': [{
+        'text': 'Доп',
+        'name': '12',
+        'id': '2',
+        'placeholder': 'Опишите все ваши пожелания к заказу'
+      }]
+    }]
+  }] %}
+
+  {% for form in form %}
+    <div class="container">
+      <p class="form__lead-text">{{ form.lead_text }}</p>
+    </div>
+
+    {% for fieldset in form.fieldsets %}
+      <fieldset class="form__fieldset form__fieldset--{{ fieldset.modifier }}">
+        <div class="container">
+          <div class="form__inner form__inner--{{ fieldset.modifier }}">
+            {% if fieldset.legend %}<span class="form__legend">{{ fieldset.legend }}</span>{% endif %}
+
+            <div class="form__section form__section--{{ fieldset.modifier }}">
+              {% for input in fieldset.inputs %}
+                <label class="form__label">
+                  <span class="form__{{ fieldset.label }}">{{ input.text }}</span>
+
+                  <input class="form__{{ input.class }}" type="{{ input.type }}" name="{{ input.name }}" id="{{ input.id }}" value="{{ input.value }}" {% if input.placeholder %}placeholder="{{ input.placeholder }}" {% endif %} {% if input.checked %}checked{% endif %} {{ 'required' if input.required }}>
+
+                  {% if input.icon %}
+                    <span class="form__input-icon form__input-icon--{{ input.type }}"></span>
+                  {% endif %}
+                </label>
+              {% endfor %}
+
+              {% if fieldset.textarea %}
+                {% for textarea in fieldset.textarea %}
+                  <label class="form__label">
+                    <span class="form__{{ fieldset.label }}">{{ textarea.text }}</span>
+                    <textarea class="form__textarea" name="{{ textarea.name }}" id="{{ textarea.id }}" placeholder="{{ textarea.placeholder }}"></textarea>
+                  </label>
+                {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    {% endfor %}
+  {% endfor %}
+
+  <div class="container">
+    <div class="form__button-wrapper">
+      <button class="form__button button" type="submit">Отправить заказ</button>
+      <p class="form__reminder-text">*Поля обязательны для заполнения</p>
+    </div>
+  </div>
+</form>
+{% endblock name %}

@@ -1,0 +1,40 @@
+// Цвета
+:root {
+  --black: rgba(0, 0, 0, 1);
+  --black-alhpa-1: rgba(0, 0, 0, 0.1);
+  --black-alpha-2: rgba(0, 0, 0, 0.2);
+  --black-alpha-3: rgba(0, 0, 0, 0.3);
+  --black-alpha-6: rgba(0, 0, 0, 0.6);
+  --grey: rgba(68, 68, 68, 1);
+  --grey-alpha-1: rgba(68, 68, 68, 0.1);
+  --grey-alpha-3: rgba(68, 68, 68, 0.3);
+  --grey-2: rgba(236, 236, 236, 1);
+  --grey-3: rgba(229, 229, 229, 1);
+  --grey-4: rgba(198, 198, 198, 1);
+  --white: rgba(255, 255, 255, 1);
+  --white-alpha-3: rgba(255, 255, 255, 0.3);
+  --white-alpha-9: rgba(255, 255, 255, 0.9);
+  --white-2: rgba(249, 249, 249, 1);
+  --white-3: rgba(241, 241, 241, 1);
+  --cyan: rgba(99, 209, 187, 1);
+  --cyan-alpha-3: rgba(99, 209, 187, 0.3);
+  --cyan-2: rgba(86, 195, 178, 1);
+  --cyan-3: rgba(98, 209, 186, 1);
+  --cyan-4: rgba(70, 193, 174, 1);
+  --cyan-4-alpha-1: rgba(70, 193, 174, 0.1);
+  --cyan-5: rgba(89, 213, 188, 1);
+}
+
+// Ширина экрана
+
+$widths: (
+  sm: 320px,
+  md: 768px,
+  xl: 1150px,
+);
+
+// Отступы
+
+$gap-sm: 30px;
+$gap-md: 50px;
+$gap-xl: 50px;
